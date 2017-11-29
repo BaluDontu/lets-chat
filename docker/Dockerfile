@@ -1,8 +1,8 @@
 FROM node:0.12-slim
 MAINTAINER SD Elements
 
-ENV PKG_JSON_URL=https://raw.githubusercontent.com/sdelements/lets-chat/master/package.json \
-    TAR_GZ_URL=https://github.com/sdelements/lets-chat/archive/master.tar.gz \
+ENV PKG_JSON_URL=https://raw.githubusercontent.com/BaluDontu/lets-chat/master/package.json \
+    TAR_GZ_URL=https://github.com/BaluDontu/lets-chat/archive/master.tar.gz \
     BUILD_DEPS='g++ gcc git make python' \
     LCB_PLUGINS='lets-chat-ldap lets-chat-s3'
 
@@ -28,9 +28,7 @@ RUN tar -xzvf master.tar.gz \
 &&  cp -a lets-chat-master/. . \
 &&  rm -rf lets-chat-master
 
-RUN groupadd -r node \
-&&  useradd -r -g node node \
-&&  chown node:node uploads \
+RUN chown node:node uploads \
 &&  mkdir -p builtAssets \
 &&  chown node:node builtAssets
 
